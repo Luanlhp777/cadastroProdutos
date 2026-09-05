@@ -20,7 +20,11 @@ export async function criarProduto(produto) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(produto)
+
+       
     });
+
+    console.log(produto)
 
     if(!resposta.ok){
         throw new Error("Erro ao criar produto.");

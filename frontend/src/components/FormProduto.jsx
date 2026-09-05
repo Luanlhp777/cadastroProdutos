@@ -13,8 +13,9 @@ function FormProduto({ onAdicionar }) {
             return;
         }
 
-        onAdicionar(nomeLimpo);
+        onAdicionar(nomeLimpo, preco);
         setNome("");
+        setPreco("");
     }
 
     return (

@@ -43,7 +43,7 @@ function App() {
 
       const novoProduto = await criarProduto({
         nome: nome,
-        preco: preco,
+        preco: preco
       });
 
       setProdutos((listaAtual) => [...listaAtual, novoProduto]);

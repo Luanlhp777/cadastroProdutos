@@ -8,17 +8,17 @@ function ListaProduto({ produtos, onExcluir, onAlterar}) {
             {produtos.map((produto) => (
                 <article className="produto" key={produto.id}>
                     <div>
-                        <h2 className={produto.concluida ? "concluida" : ""}>
-                            {produto.titulo}
+                        <h2 className={produto.id ? "concluida" : ""}>
+                            {produto.nome}
                         </h2>
                         <span>
-                            {produto.concluida ? "Concluida" : "Pendente"}
+                            {produto.alterar ? "Concluida" : "Pendente"}
                         </span>
                     </div>
 
                     <div className="acoes">
                         <button type="button" onClick={() => onAlterar(produto)}>
-                            {produto.concluida ? "Reabrir" : "Concluir"}
+                            {produto.alterar ? "Reabrir" : "Alterar"}
                         </button>
 
                         <button type="button" className="botao-excluir" onClick={() => onExcluir(produto.id)}>
