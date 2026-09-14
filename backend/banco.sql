@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS aula_crud;
+CREATE DATABASE IF NOT EXISTS loja1;
 
-USE aula_crud;
+USE loja1;
 
 
 -- ============================================================

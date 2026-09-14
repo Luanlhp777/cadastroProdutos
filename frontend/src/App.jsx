@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import FormProduto from "./components/FormProduto.jsx";
 import ListaProduto from "./components/ListaProduto.jsx";
 import Header from "./components/Header.jsx";
@@ -7,8 +8,8 @@ import Footer from "./components/Footer.jsx";
 import {
   buscarProdutos,
   criarProduto,
+  atualizarProduto,
   excluirProduto,
-  atualizarStatus
 } from "./services/produtoService.js";
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
     } catch (error) {
       console.error(error);
       setErro(
-        "Não foi possível carregar os produtos. Verifique se o JSON Server está rodando."
+        "Não foi possível carregar os produtos. Verifique se a API está rodando."
       );
     } finally {
       setCarregando(false);
@@ -41,10 +42,12 @@ function App() {
     try {
       setErro("");
 
-      const novoProduto = await criarProduto({
+      const resposta = await criarProduto({
         nome: nome,
         preco: preco
       });
+
+      const novoProduto = resposta.produto;
 
       setProdutos((listaAtual) => [...listaAtual, novoProduto]);
     } catch (error) {
@@ -93,14 +96,16 @@ function App() {
     try {
       setErro("");
 
-      const produtoAtualizada = await atualizarStatus(
+      const resposta = await atualizarProduto(
         produto.id,
-        !produto.concluida
+        produto
       );
+
+      const produtoAtualizado = resposta.produto;
 
       setProdutos((listaAtual) =>
         listaAtual.map((item) =>
-          item.id === produto.id ? produtoAtualizada : item
+          item.id === produto.id ? produtoAtualizado : item
         )
       );
     } catch (error) {
@@ -119,7 +124,7 @@ function App() {
         <h1>Cadastro de Produtos</h1>
 
         <p>
-          React consumindo uma API simulada com JSON Server
+          React consumindo uma API REST com Node.js, Express e MySQL
         </p>
       </section>
 

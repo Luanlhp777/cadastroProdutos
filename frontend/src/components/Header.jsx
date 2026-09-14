@@ -5,11 +5,11 @@ function Header() {
 
         <div className="logo">
           <span>&lt;/&gt;</span>
-          DEV TASKS
+          DEV PRODUCTS
         </div>
 
         <div className="topo-texto">
-          React + JSON Server
+          React + Node.js + MySQL
         </div>
 
       </div>

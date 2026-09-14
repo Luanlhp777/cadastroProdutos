@@ -1,4 +1,4 @@
-const URL_API = "http://localhost:3000/produtos";
+const URL_API = "http://localhost:3006/produtos";
 
 // FUNÇÃO PARA BUSCAR 
 export async function buscarProdutos() {
@@ -24,13 +24,31 @@ export async function criarProduto(produto) {
        
     });
 
-    console.log(produto)
-
     if(!resposta.ok){
         throw new Error("Erro ao criar produto.");
     }
 
     return await resposta.json();    
+}
+
+// ALTERAR PRODUTO
+export async function atualizarProduto(id, produto) {
+    const resposta = await fetch(`${URL_API}/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nome: produto.nome,
+            preco: produto.preco
+        })
+    });
+
+    if (!resposta.ok) {
+        throw new Error("Erro ao atualizar produto.");
+    }
+
+    return await resposta.json();
 }
 
 // FUNÇÃO PARA EXCLUIR 
@@ -42,23 +60,6 @@ export async function excluirProduto(id) {
     if(!resposta.ok){
         throw new Error("Erro ao excluir produto");
     }
-}
 
-// FUNÇÃO PARA ATUALIZAR STATUS
-export async function atualizarStatus(id, concluida) {
-  const resposta = await fetch(`${URL_API}/${id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      concluida: concluida
-    })
-  });
-
-  if (!resposta.ok) {
-    throw new Error("Erro ao atualizar tarefa");
-  }
-
-  return await resposta.json();
+    return await resposta.json();
 }

@@ -6,7 +6,7 @@ function Footer() {
     <footer className="rodape">
 
       <p>
-        Desenvolvido com React + JSON Server
+        Desenvolvido com React + Node.js + Express + MySQL
       </p>
 
       <span>
