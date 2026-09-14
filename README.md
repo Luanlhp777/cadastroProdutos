@@ -12,17 +12,17 @@ O projeto implementa um cadastro de produtos com operações CRUD, comunicação
 
 Praticar o desenvolvimento de uma aplicação Full Stack utilizando:
 
-- React;
-- Node.js;
-- Express;
-- API REST;
-- Fetch API;
-- MySQL;
-- mysql2;
-- Stored Procedures;
-- CORS;
-- CRUD;
-- integração entre frontend, backend e banco de dados.
+- React
+- Node.js
+- Express
+- API REST
+- Fetch API
+- MySQL
+- mysql2
+- Stored Procedures
+- CORS
+- CRUD
+- integração entre frontend, backend e banco de dados
 
 ---
 
@@ -44,6 +44,7 @@ Praticar o desenvolvimento de uma aplicação Full Stack utilizando:
 - JavaScript
 - mysql2
 - CORS
+- dotenv
 
 ### Banco de Dados
 
@@ -123,15 +124,15 @@ A separação em camadas facilita a organização do código e mantém o fronten
 
 A aplicação trabalha com as principais operações de um CRUD:
 
-- cadastrar produtos;
-- listar produtos;
-- atualizar produtos;
-- excluir produtos;
-- comunicação com API REST;
-- persistência dos dados no MySQL;
-- tratamento de erros;
-- confirmação antes da exclusão;
-- carregamento dos dados ao iniciar a aplicação.
+- cadastrar produtos
+- listar produtos
+- atualizar produtos
+- excluir produtos
+- comunicação com API REST
+- persistência dos dados no MySQL
+- tratamento de erros
+- confirmação antes da exclusão
+- carregamento dos dados ao iniciar a aplicação
 
 ---
 
@@ -140,13 +141,13 @@ A aplicação trabalha com as principais operações de um CRUD:
 O backend utiliza a porta:
 
 ```text
-3000
+3006
 ```
 
 URL base:
 
 ```text
-http://localhost:3000
+http://localhost:3006
 ```
 
 ### Endpoints
@@ -162,10 +163,16 @@ http://localhost:3000
 
 ## Banco de Dados
 
-O backend utiliza o banco:
+O projeto utiliza o banco:
 
 ```text
-aula_crud
+loja1
+```
+
+A tabela principal é:
+
+```text
+produtos
 ```
 
 As operações são realizadas através das Stored Procedures:
@@ -177,17 +184,23 @@ sp_atualizar_produto
 sp_excluir_produto
 ```
 
-Fluxo:
+---
 
-```text
-API
- ↓
-mysql2
- ↓
-Stored Procedure
- ↓
-MySQL
+## Variáveis de ambiente
+
+As credenciais do banco de dados são armazenadas em um arquivo `.env`, evitando deixar dados sensíveis diretamente no código.
+
+Crie um arquivo `.env` dentro da pasta `backend`:
+
+```env
+DB_HOST=seu_host
+DB_PORT=3306
+DB_USER=seu_usuario
+DB_PASSWORD=sua_senha
+DB_NAME=loja1
 ```
+
+O arquivo `.env` não deve ser enviado ao GitHub.
 
 ---
 
@@ -290,24 +303,36 @@ Instale as dependências:
 npm install
 ```
 
-Execute o script SQL do projeto no MySQL e ajuste, se necessário, as configurações de conexão em `app.js`.
+Execute o script:
 
-Depois inicie o servidor:
-
-```bash
-node app.js
+```text
+banco.sql
 ```
 
-ou:
+no MySQL.
+
+Depois crie e configure o arquivo:
+
+```text
+.env
+```
+
+Com o banco configurado, inicie o servidor:
 
 ```bash
 npm run dev
 ```
 
+ou:
+
+```bash
+node app.js
+```
+
 Servidor:
 
 ```text
-http://localhost:3000
+http://localhost:3006
 ```
 
 ---
@@ -353,6 +378,7 @@ http://localhost:5173
 - Fetch API
 - Stored Procedures
 - CORS
+- dotenv
 - JSON
 - `useState`
 - `useEffect`
